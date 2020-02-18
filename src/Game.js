@@ -12,6 +12,7 @@ export default class Game extends React.Component{
       stepNumber: 0, 
       xIsNext: true,
     }
+    this.reset = this.reset.bind(this)
   }
 
   handleClick(i){
@@ -30,6 +31,15 @@ export default class Game extends React.Component{
       }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
+    })
+  }
+  reset(){
+    this.setState({
+      history: [{
+        squares: Array(9).fill(null)
+      }],
+      stepNumber: 0, 
+      xIsNext: true,
     })
   }
   /*
@@ -74,6 +84,11 @@ export default class Game extends React.Component{
     }
     return(
       <div className='game'>
+        <div className='title'>
+          <h1>Tic Tac Toe</h1>
+          
+        </div>
+        
         <div className='game-board'>
           <Board 
           squares={current.squares}
@@ -84,6 +99,7 @@ export default class Game extends React.Component{
           <div>{ status }</div>
           {/* <ol>{moves}</ol> */}
         </div>
+        <button className='reset' onClick={this.reset}>New Game </button>
       </div>
     )
   }
