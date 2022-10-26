@@ -13,6 +13,7 @@ export default class Game extends React.Component{
       xIsNext: true,
     }
     this.reset = this.reset.bind(this)
+    console.log('hey')
   }
 
   handleClick(i){
